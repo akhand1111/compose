@@ -4,8 +4,8 @@ on:
     - cron:  '15 * * * *'
 name: sync fork
 jobs:
-  labels:
-    name: fork
+  fork:
+    name: sync fork
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -13,6 +13,8 @@ jobs:
         ref: master
         persist-credentials: true
         token: ${{ secrets.GH_TOKEN }}
+    - run: |
+        git fetch --prune --unshallow
     - name: setup scripts
       run: chmod +x ./script/build
     - name: setup git
