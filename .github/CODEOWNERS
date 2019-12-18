@@ -4,3 +4,9 @@
 # KEEP THIS FILE SORTED. Order is important. Last match takes precedence.
 
 *       @ndeloof @rumpl @ulyssessouza
+
+# fork specific
+/.github/workflows/fork.yml        @tprasadtp
+/script/build/fork                 @tprasadtp
+/.travis.yml                       @tprasadtp
+README.md                          @tprasadtp

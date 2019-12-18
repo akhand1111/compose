@@ -59,7 +59,7 @@ COPY tox.ini .
 COPY setup.py .
 COPY README.md .
 COPY compose compose/
-RUN tox --notest
+RUN tox -vv --notest
 COPY . .
 ARG GIT_COMMIT=unknown
 ENV DOCKER_COMPOSE_GITSHA=$GIT_COMMIT

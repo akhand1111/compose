@@ -2,7 +2,15 @@ Docker Compose
 ==============
 ![Docker Compose](logo.png?raw=true "Docker Compose Logo")
 
-## :exclamation: The docker-compose project announces that as Python 2 reaches it's EOL, versions 1.25.x will be the last to support it. For more information, please refer to this [issue](https://github.com/docker/compose/issues/6890).
+Why Fork?
+---------
+
+[![Build Status](https://travis-ci.com/tprasadtp/compose.svg?branch=master)](https://travis-ci.com/tprasadtp/compose)
+[![Labels](https://github.com/tprasadtp/compose/workflows/fork%20sync/badge.svg)](https://github.com/tprasadtp/compose/actions?workflow=fork+sync)
+
+> SSH support was added in v1.25 which adds few dependencies to support SSH. I don't like it, as it basically
+> forces you to install `*-dev` libraries and packages on `arm64` and `armhf` as pre-compiled binaries are not available.
+> This fork exists to provide pre-compiled `arm` binaries and **just that**.
 
 Compose is a tool for defining and running multi-container Docker applications.
 With Compose, you use a Compose file to configure your application's services.

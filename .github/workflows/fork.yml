@@ -1,0 +1,27 @@
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '15 * * * *'
+name: sync fork
+jobs:
+  labels:
+    name: fork
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: master
+        persist-credentials: true
+        token: ${{ secrets.GH_TOKEN }}
+    - name: setup scripts
+      run: chmod +x ./script/build
+    - name: setup git
+      run: |
+        echo "Setting git conf user.email"
+        git config --global user.email "${GITHUB_EMAIL}" && echo "Done"
+        echo "Setting git conf user.name"
+        git config --global user.name "valarie-ci-bot" && echo "Done"
+      env:
+        GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
+    - name: fork
+      run: ./script/build/fork

@@ -1,0 +1,44 @@
+version: ~> 1.0
+os:
+- linux
+# FIX REASON: Avoid stalls on ARM builds
+filter_secrets: false
+# FIX END
+language: python
+dist: bionic
+env:
+  global:
+  - DOCKER_BUILDKIT=0
+python:
+- "3.7"
+services:
+- docker
+before_install:
+- chmod +x ./script/build/*
+matrix:
+  include:
+   - os: linux
+     arch: amd64
+   - os: linux
+     arch: arm64
+script:
+- sudo ./script/build/linux
+- sudo chown -R $USER:$USER dist/
+- cd dist
+- sha256sum docker-compose-Linux-$(uname -m) | tee -a docker-compose-Linux-$(uname -m).SHA256SUM
+- sha512sum docker-compose-Linux-$(uname -m) | tee -a docker-compose-Linux-$(uname -m).SHA512SUM
+- cd ..
+deploy:
+- provider: releases
+  token: ${GITHUB_TOKEN}
+  file:
+  - dist/*
+  cleanup: false
+  name: ${TRAVIS_TAG}
+  release_notes: "For more info about this release, checkout the release notes from [upstream](https://github.com/docker/compose/releases/${TRAVIS_TAG})."
+  overwrite: true
+  on:
+    tags: true
+  edge: true
+notifications:
+  email: false
