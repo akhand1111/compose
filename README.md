@@ -6,9 +6,6 @@ Docker Compose
 [![Build Status](https://travis-ci.com/tprasadtp/compose.svg?branch=master)](https://travis-ci.com/tprasadtp/compose)
 [![Labels](https://github.com/tprasadtp/compose/workflows/sync%20fork/badge.svg)](https://github.com/tprasadtp/compose/actions?workflow=sync+fork)
 
-> SSH support was added in v1.25 which adds few dependencies to support SSH. I don't like it, as it
-> forces you to install `*-dev` libraries and packages on `arm64` and `armhf` as pre-compiled binaries
-> are not available on these platforms.
 > This fork exists to provide pre-compiled `arm` binaries and **just that**.
 
 Compose is a tool for defining and running multi-container Docker applications.
