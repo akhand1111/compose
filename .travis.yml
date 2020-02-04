@@ -13,6 +13,8 @@ python:
 - "3.7"
 services:
 - docker
+install:
+  - echo "Using docker, so nothing to install on host!"
 before_install:
 - chmod +x ./script/build/*
 matrix:
@@ -35,7 +37,7 @@ deploy:
   - dist/*
   cleanup: false
   name: ${TRAVIS_TAG}
-  release_notes: "For more info about this release, checkout the release notes from [upstream](https://github.com/docker/compose/releases/${TRAVIS_TAG})."
+  release_notes: "Built from master branch. For more info about this release, checkout changelog from [upstream](https://github.com/docker/compose/blob/master/CHANGELOG.md)"
   overwrite: true
   on:
     tags: true

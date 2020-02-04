@@ -118,8 +118,12 @@ function update_fork()
   ##
   print_notice "Pushing back changes..."
   git push
-  print_notice "Pushing back tags..."
-  git push --tags
+  print_notice "Building Tags"
+  commit_tag="$(date "+%Y-%m-%d").master"
+  print_notice "Commit will be tagged ${commit_tag}"
+  print_notice "Pushing tags..."
+  git tag "${commit_tag}"
+  git push origin "${commit_tag}"
 
 
 }
