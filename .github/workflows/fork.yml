@@ -24,10 +24,10 @@ jobs:
     - name: setup git
       run: |
         echo "Setting git conf user.email"
-        git config --global user.email "${GITHUB_EMAIL}" && echo "Done"
+        git config --global user.email "${GH_EMAIL}" && echo "Done"
         echo "Setting git conf user.name"
         git config --global user.name "valarie-ci-bot" && echo "Done"
       env:
-        GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
+        GH_EMAIL: ${{ secrets.GH_EMAIL }}
     - name: fork
       run: ./script/build/fork

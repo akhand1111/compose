@@ -119,12 +119,18 @@ function update_fork()
   print_notice "Pushing back changes..."
   git push
   print_notice "Building Tags"
+
   commit_tag="$(date "+%Y-%m-%d").master"
   print_notice "Commit will be tagged ${commit_tag}"
-  print_notice "Pushing tags..."
-  git tag "${commit_tag}"
-  git push origin "${commit_tag}"
 
+  # count=0
+  if git rev-parse "${commit_tag}" >/dev/null 2>&1; then
+    print_error "There already seems to be a tag named ${commit_tag}!"
+  else
+    print_notice "Creating and Pushing tags..."
+    git tag "${commit_tag}"
+    git push origin "${commit_tag}"
+  fi
 
 }
 

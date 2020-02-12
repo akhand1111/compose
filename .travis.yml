@@ -37,7 +37,7 @@ deploy:
   - dist/*
   cleanup: false
   name: ${TRAVIS_TAG}
-  release_notes: "Built from master branch. For more info about this release, checkout changelog from [upstream](https://github.com/docker/compose/blob/master/CHANGELOG.md)"
+  release_notes: "Built from master branch. For more info about this release, checkout changelog from [upstream](https://github.com/docker/compose/blob/master/CHANGELOG.md)."
   overwrite: true
   on:
     tags: true
