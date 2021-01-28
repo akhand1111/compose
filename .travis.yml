@@ -22,7 +22,9 @@ matrix:
    - os: linux
      arch: amd64
    - os: linux
-     arch: arm64
+     arch: arm64-graviton2
+     virt: lxd
+     group: edge
 script:
 - sudo ./script/build/linux
 - sudo chown -R $USER:$USER dist/
